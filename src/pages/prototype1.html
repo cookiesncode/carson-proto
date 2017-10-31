@@ -4,81 +4,123 @@
 </div>
 
 <div class="top-bar" id="global-nav">
-    <div class="top-bar-left">
-      <ul class="dropdown menu" data-dropdown-menu>
-        <li class="menu-text">Site Title</li>
-        <li>
-          <a href="#">One</a>
-          <ul class="menu vertical">
-            <li><a href="#">One</a></li>
-            <li><a href="#">Two</a></li>
-            <li><a href="#">Three</a></li>
-          </ul>
-        </li>
-        <li><a href="#">Two</a></li>
-        <li><a href="#">Three</a></li>
-      </ul>
-    </div>
+  <div class="top-bar-left">
+    <ul class="dropdown menu" data-dropdown-menu>
+      <li class="menu-text">Site Title</li>
+      <li>
+        <a href="#">One</a>
+        <ul class="menu vertical">
+          <li>
+            <a href="#">One</a>
+          </li>
+          <li>
+            <a href="#">Two</a>
+          </li>
+          <li>
+            <a href="#">Three</a>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">Two</a>
+      </li>
+      <li>
+        <a href="#">Three</a>
+      </li>
+    </ul>
   </div>
+</div>
+
 
 <div class="grid-container">
-  <div class="grid-x grid-margin-x">
-    <div class="medium-7 large-6 cell">
-      <h1>Welcome to Fort Carson</h1>
-      <h4 class="subheader">The best hometown in the army - Home of America's best!</h4>
-    </div>
-    <div class="medium-5 large-6 cell">
-      <div class="callout primary">
-        <p class="lead">Road Conditions</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita, modi? Odio sunt esse velit et quas, dolorem quaerat fugiat excepturi impedit. Quaerat voluptate officia vero aspernatur hic nobis numquam reprehenderit.</p>
+  <header class="page-header">  
+    <div class="grid-x grid-margin-x">
+      <div class="medium-7 large-6 cell">
+        <h1>Welcome to Fort Carson</h1>
+        <h4 class="subheader">The best hometown in the army - Home of America's best!</h4>
+      </div>
+      <div class="medium-5 large-6 cell">
+        <div class="callout primary">
+          <p class="lead">Road Conditions</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita, modi? Odio sunt esse velit et quas, dolorem quaerat
+            fugiat excepturi impedit. Quaerat voluptate officia vero aspernatur hic nobis numquam reprehenderit.</p>
+        </div>
       </div>
     </div>
-  </div>
-  
+  </header>
   <hr>
-  
-  <h2>Resources</h2>  
-  <div class="grid-x grid-margin-x">
-    <div class="large-auto cell">
-      <div class="media-object">
-        <div class="media-object-section">
-          <div class="thumbnail">
-            <img src="http://placehold.it/50x50&text=Pegasi B">
-          </div>
-        </div>
-        <div class="media-object-section">
-          <h4>Dreams feel real while we're in them.</h4>
-          <p>I'm going to improvise. Listen, there's something you should know about me... about inception. An idea is like a virus, resilient, highly contagious. The smallest seed of an idea can grow. It can grow to define or destroy you.</p>
-        </div>
-      </div>  
-    </div>
-    <div class="large-auto cell">
-        <div class="media-object">
-          <div class="media-object-section">
-            <div class="thumbnail">
-              <img src="http://placehold.it/50x50&text=Pegasi B">
-            </div>
-          </div>
-          <div class="media-object-section">
-            <h4>Dreams feel real while we're in them.</h4>
-            <p>I'm going to improvise. Listen, there's something you should know about me... about inception. An idea is like a virus, resilient, highly contagious. The smallest seed of an idea can grow. It can grow to define or destroy you.</p>
-          </div>
-        </div>  
-      </div>
-      <div class="large-auto cell">
-          <div class="media-object">
-            <div class="media-object-section">
-              <div class="thumbnail">
-                <img src="http://placehold.it/50x50&text=Pegasi B">
-              </div>
-            </div>
-            <div class="media-object-section">
-              <h4>Dreams feel real while we're in them.</h4>
-              <p>I'm going to improvise. Listen, there's something you should know about me... about inception. An idea is like a virus, resilient, highly contagious. The smallest seed of an idea can grow. It can grow to define or destroy you.</p>
-            </div>
-          </div>  
-      </div>      
-  </div>
 
+  <section>
+    <h3>Quick Access</h3>
+    <div class="grid-x grid-margin-x">
+      {{#repeat 3}}
+        <div class="medium-auto cell">
+          <div class="card">
+            <div class="card-divider">
+              Section Title
+            </div>
+            <div class="card-section">
+              <ul>
+                <li>
+                  <a href="#">This is a link</a>
+                </li>
+                <li>
+                  <a href="#">This is a link</a>
+                </li>
+                <li>
+                  <a href="#">This is a link</a>
+                </li>
+                <li>
+                  <a href="#">This is a link</a>
+                </li>
+                <li>
+                  <a href="#">This is a link</a>
+                </li>
+                <li>
+                  <a href="#">This is a link</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      {{/repeat}}
+    </div>
+  </section>
+
+  <section>
+    <h3>Community Events</h3>
+    <div class="grid-x callout">
+      {{#repeat 2}}
+        <div class="cell">This is some text</div>
+      {{/repeat}}
+    </div>
+  </section>
+  
 </div>
 <!--end .grid-container-->
+
+<footer class="callout">
+  <div class="grid-x grid-margin-x">
+    {{#repeat 4}}
+      <div class="cell medium-3">
+        <ul>
+          <li>
+            <a href="#">This is a link</a>
+          </li>
+          <li>
+            <a href="#">This is a link</a>
+          </li>
+          <li>
+            <a href="#">This is a link</a>
+          </li>
+          <li>
+            <a href="#">This is a link</a>
+          </li>
+          <li>
+            <a href="#">This is a link</a>
+          </li>
+        </ul>
+      </div>
+    {{/repeat}}
+  </div>
+</footer>
