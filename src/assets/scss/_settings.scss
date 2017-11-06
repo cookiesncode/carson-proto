@@ -99,6 +99,9 @@ $global-button-cursor: auto;
 $global-color-pick-contrast-tolerance: 0;
 $print-transparent-backgrounds: true;
 
+// 1.Custom Global
+// ---------
+$global-boxshadow: 0px 2px 4px rgba(0,0,0,0.18);
 @include add-foundation-colors;
 
 // 2. Breakpoints
