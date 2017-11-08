@@ -1,39 +1,5 @@
-<div class="title-bar" data-responsive-toggle="global-nav" data-hide-for="medium">
-  <button class="menu-icon" type="button" data-toggle="global-nav"></button>
-  <div class="title-bar-title">Menu</div>
-</div>
-
-<div class="top-bar" id="global-nav">
-  <div class="top-bar-left">
-    <ul class="dropdown menu" data-dropdown-menu>
-      <li class="menu-text">Site Title</li>
-      <li>
-        <a href="#">One</a>
-        <ul class="menu vertical">
-          <li>
-            <a href="#">One</a>
-          </li>
-          <li>
-            <a href="#">Two</a>
-          </li>
-          <li>
-            <a href="#">Three</a>
-          </li>
-        </ul>
-      </li>
-      <li>
-        <a href="#">Two</a>
-      </li>
-      <li>
-        <a href="#">Three</a>
-      </li>
-    </ul>
-  </div>
-</div>
-
-
-<div class="grid-container">
-  <header class="page-header">  
+<header class="page-header"> 
+  <div class="grid-container">
     <div class="grid-x grid-margin-x">
       <div class="medium-7 large-6 cell">
         <h1>Welcome to Fort Carson</h1>
@@ -47,47 +13,20 @@
         </div>
       </div>
     </div>
-  </header>
-
-  <section class="articles">
-    <h3>Current Events</h3>
-    <div class="grid-x grid-margin-x small-up-2 medium-up-5 community-events">
- 
-    </div>
-  </section>
-
-  <section>
-    <h3>Community Events</h3>
-    <div class="grid-x callout road-status">
- 
-    </div>
-  </section>
-  
-</div>
-<!--end .grid-container-->
-
-<footer class="callout">
-  <div class="grid-x grid-margin-x">
-    {{#repeat 4}}
-      <div class="cell medium-3">
-        <ul>
-          <li>
-            <a href="#">This is a link</a>
-          </li>
-          <li>
-            <a href="#">This is a link</a>
-          </li>
-          <li>
-            <a href="#">This is a link</a>
-          </li>
-          <li>
-            <a href="#">This is a link</a>
-          </li>
-          <li>
-            <a href="#">This is a link</a>
-          </li>
-        </ul>
-      </div>
-    {{/repeat}}
   </div>
-</footer>
+</header>
+
+<section class="main-content">
+  <div class="grid-container">
+    <h3>Community Events</h3>
+    <div class="grid-x grid-margin-x small-up-2 medium-up-5 community-events">
+    </div>
+  </div>
+
+  <div class="grid-container">
+    <h3>News</h3>
+    <div class="grid-x road-status">
+    </div>
+  </div>
+</section>
+  
