@@ -1,0 +1,7 @@
+.card {
+  a {
+    &:link, &:visited {
+      color: $white;
+    }
+  }
+}
