@@ -19,7 +19,7 @@ function getImages(imgUrl) {
 function createDomElem() {
   var items = []
   $.each(titles, function(key, val) {
-    items.push('<div class="cell"><div class="card"><img src="' + thumbnails[key] + '">' + '<div class="card-section"><p><a href="' + links[key] + '">' + val + '</a></p></div></div></div>');
+    items.push('<div class="cell"><div class="card"><div class="card-section"><img src="' + thumbnails[key] + '"></div><div class="card-section"><p><a href="' + links[key] + '">' + val + '</a></p></div></div></div>');
   });
   $targetArea.html(items.join(''));
 }
