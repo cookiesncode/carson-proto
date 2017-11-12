@@ -1,3 +1,13 @@
 footer {
   background-color: $secondary-color;
+  margin-bottom:0;
+  padding: 20px;
+  @include breakpoint(small down) {
+    padding: 15px
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+  }
 }

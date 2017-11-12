@@ -1,9 +1,12 @@
 .page-header {
+  font-size: 1em;
   background-color: $secondary-color;
   color: $white;
-
+  padding: 0 0 1rem 0;
+  border-bottom: 0.5em solid $primary-color;
   h1 {
     font-weight: $global-weight-normal;
-    color: $army-gold;
+    color: $white;
+    margin: 0;
   }
 }
