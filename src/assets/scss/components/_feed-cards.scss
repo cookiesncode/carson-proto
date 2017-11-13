@@ -1,16 +1,22 @@
-.community-center {
-  .fa-spinner {
-    font-size: 50px;
+.feeds {
+  min-height: 15rem;
+  .card {
+    .card-section {
+      min-height: 1px
+    }
+    a {
+      &:link, &:visited {
+        color: $white;
+      }
+    }
   }
-}
-
-.card {
-  .card-section {
-    min-height: 1px
-  }
-  a {
-    &:link, &:visited {
-      color: $white;
+ 
+  .community-center {
+    .fa-spinner {
+      font-size: 50px;
     }
   }
 }
+
+
+
