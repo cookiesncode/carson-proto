@@ -5,6 +5,9 @@
 }
 
 .card {
+  .card-section {
+    min-height: 1px
+  }
   a {
     &:link, &:visited {
       color: $white;
