@@ -12,11 +12,12 @@
 </head>
 
 <body>
-  <div class="off-">
-    <div class="off-canvas position-right" id="offCanvas" data-off-canvas>
+  <div class="off-canvas-wrapper">
+    <div class="off-canvas position-left" id="offCanvas" data-off-canvas>
       {{> offcanvas-menu}}
     </div>
     <div class="off-canvas-content" data-off-canvas-content>
+      {{> top-bar}} 
       {{> header}} 
       {{> body}} 
       {{> footer}}

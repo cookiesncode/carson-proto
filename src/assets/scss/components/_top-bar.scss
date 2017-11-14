@@ -1,10 +1,9 @@
+.top-bar {
+  color: $white;
+}
+
 .hamburger-icon {
-  @include hamburger($primary-color, $secondary-color, 20px, 16px, 1px, 4);
+  @include hamburger($primary-color, $primary-color, 20px, 18px, 1px, 4);
   margin: 0 0.5em 0 0;
 }
 
-.menu {
-  .menu-text {
-    color: $white;
-  }
-}
