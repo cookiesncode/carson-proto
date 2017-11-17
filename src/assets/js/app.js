@@ -7,11 +7,11 @@ import Foundation from 'foundation-sites';
 // If you want to pick and choose which modules to include, comment out the above and uncomment
 // the line below
 //import './lib/foundation-explicit-pieces';
-import './lib/reporting-status';
+import './lib/jquery.feedme';
 
 $(document).foundation();
 
 $('.comm').feedMe({
-  category : 42,
-  quantity : 3
+  category : 5,
+  quantity : 10
 });
