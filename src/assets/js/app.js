@@ -11,5 +11,7 @@ import './lib/reporting-status';
 
 $(document).foundation();
 
-
-
+$('.comm').feedMe({
+  category : 42,
+  quantity : 3
+});
