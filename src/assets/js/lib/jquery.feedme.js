@@ -19,10 +19,11 @@ Javascript details:
 
 - HTML details:
   - The HTML selection you pass to jQuery/$ must have a child element that will be used as your template. This element, usually a "div"  must have a data attribute called "data-feed-template". This element must also must have a class that sets it to display none. You can use the foundation 'hide' class to do this or you can use plain css to hide the template class.
-  - The children of your template will use data attributes, data-feed-[datatype], in order to bind the return post data to it. 
+  - The children of your template will use data attributes, i.e. data-feed-[datatype], in order to bind the return post data to it. 
     Full Example: 
-    <div class="hide""" data-feed-template>
+    <div class="hide" data-feed-template>
       <h1 data-feed-title></h1>
+      <div data-feed-content></div>
     </div>
 
   -List of data types available
@@ -31,8 +32,6 @@ Javascript details:
     3. data-feed-content = Post content body
     4. data-feed-excerpt = Post excerpt
     5. data-feed-img = The first available image inside the content body
-
-
 */
 import $ from 'jquery';
 import jQuery from 'jquery';
@@ -47,7 +46,6 @@ import jQuery from 'jquery';
     var url = 'http://www.fortcarsonmountaineer.com/wp-json/wp/v2/posts?per_page=' + options.quantity + categories + tags;
     var output = []; 
     var $template = $this.find('[data-feed-template]');
-  
   
     function outputHtml() {
       $this.html(output);
@@ -82,7 +80,7 @@ import jQuery from 'jquery';
           outputHtml();
         }
         else {
-          $targetArea.html('<p>Uh oh, there is an issue getting the information right now.</p>');
+          $this.html('<p>Uh oh, there is an issue getting the information right now.</p>');
         }  
       });
     });
