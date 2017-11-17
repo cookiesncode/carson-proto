@@ -1,20 +1,50 @@
+/*
+--------------------INSTRUCTIONS---------------------
+Javascript details:
+  - Make a jQuery selection and call .feedMe() on it. Example: $(selector).feedMe(); 
+  - You can pass options to the method using an object. 
+    Example:
+    $(selector).feedMe({
+      category : 5,
+      tags : 1110,
+      quantity : 10
+    });
+
+-List of options:
+  1. category = The category ID you wish to filter the post by. The plugin only accepts a single category. The default is 'none'
+  2. tags = The tag ID you wish to filter by. The plugin only accepts a single tag. The default is 'none' 
+  3. quantity = The number of posts you wish to receive. The default is 10 and the max is 100.
+
+- HTML details:
+  - The HTML selection you pass to jQuery/$ must have a child element that will be used as your template. This element, usually a "div"  must have a data attribute called "data-feed-template". This element must also must have a class that sets it to display none. You can use the foundation 'hide' class to do this or you can use plain css to hide the template class.
+  - The children of your template will use data attributes, data-feed-[datatype], in order to bind the return post data to it. 
+    Example: <h1 data-feed-title></h1>
+
+  -List of data types available
+    1. data-feed-link = Post link
+    2. data-feed-title = Post title
+    3. data-feed-content = Post content body
+    4. data-feed-excerpt = Post excerpt
+    5. data-feed-img = The first available image inside the content body
+
+
+*/
 import $ from 'jquery';
 import jQuery from 'jquery';
 (function($) {
-
+// to do
   $.fn.feedMe = function(options) {
     
     $.fn.feedMe.defaults = {
-      url : 'http://www.fortcarsonmountaineer.com/wp-json/wp/v2/posts',
-      category : null,
-      tags : null,
+      category : 'none',
+      tags : 'none',
       quantity : 10
     };
     options = $.extend($.fn.feedMe.defaults, options);
 
     var $this = $(this);
-    var categories = options.category ? '&categories=' + options.category : '';
-    var tags = options.tags ? '&tags=' + options.tags : '';
+    var categories = options.category !== 'none' ? '&categories=' + options.category : '';
+    var tags = options.tags !== 'none' ? '&tags=' + options.tags : '';
     var url = 'http://www.fortcarsonmountaineer.com/wp-json/wp/v2/posts?per_page=' + options.quantity + categories + tags;
     var output = []; 
     var $template = $this.find('[data-feed-template]');
