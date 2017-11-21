@@ -36,7 +36,10 @@
 import $ from 'jquery';
 import jQuery from 'jquery';
 (function($) {
-
+/*Still doesnt work. some things to try
+- try to put the logic in the binding code to make ajax call or
+- better yet use the global ajax functions to check if the url is the same.
+*/
   $.fn.feedMe = function(options) {
     
     options = $.extend($.fn.feedMe.defaults, options);
@@ -45,7 +48,7 @@ import jQuery from 'jquery';
     var tags = options.tags !== 'none' ? '&tags=' + options.tags : '';
     var url = 'http://www.fortcarsonmountaineer.com/wp-json/wp/v2/posts?per_page=' + options.quantity + categories + tags;
     var output = [];
-    var feedOutput = []; 
+    var feedOutput = [];
 
     return this.each(function() {
       var $this = $(this);
@@ -66,29 +69,33 @@ import jQuery from 'jquery';
         });
       }
 
-        $.getJSON(url, function (data, textStatus, jqxhr) {
-          if (textStatus === 'success') {
-            if (feedOutput.length < 1) {
-              $.each(data, function(key, val) {
-                var feedItem = {
-                  'title' : val.title.rendered,
-                  'imgSrc' : $(val.content.rendered).find('img').eq(0).attr('src'),
-                  'url' : val.link,
-                  'excerpt' : val.excerpt.rendered,
-                  'content' : val.content.rendered,
-                  'tags' : val.tags,
-                  'categories' : val.categories
-                }
-                feedOutput.push(feedItem);
-              });
-              bindTemplate($newTemplate, feedOutput);
-            }             
-            outputHtml();
-          }
-          else {
-            $this.html('<p>Uh oh, there is an issue getting the information right now.</p>');
-          }  
-        });
+      $.ajax(url, {
+        cache: true,
+        success: function (data, textStatus, jqXHR) {
+          if (feedOutput.length < 1) {
+            $.each(data, function(key, val) {
+              var feedItem = {
+                'title' : val.title.rendered,
+                'imgSrc' : $(val.content.rendered).find('img').eq(0).attr('src'),
+                'url' : val.link,
+                'excerpt' : val.excerpt.rendered,
+                'content' : val.content.rendered,
+                'tags' : val.tags,
+                'categories' : val.categories
+              }
+              feedOutput.push(feedItem);
+            });
+            bindTemplate($newTemplate, feedOutput);
+          }             
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+          $this.html('<p>Uh oh, there is an issue getting the information right now.</p>');
+        },
+        complete: function (jqXHR, textStatus) {
+          outputHtml();
+        }
+      });
+
     }); //end return
   }//end $.fn.feed
 
