@@ -15,3 +15,7 @@ $('.comm').feedMe({
   category : 5,
   quantity : 10
 });
+
+$('.reporting-status').feedMe({
+  category: 7923
+})
