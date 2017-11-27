@@ -46,7 +46,7 @@ import jQuery from 'jquery';
     var domSelection
     var categories = options.category !== 'none' ? '&categories=' + options.category : '';
     var tags = options.tags !== 'none' ? '&tags=' + options.tags : '';
-    var url = 'http://www.fortcarsonmountaineer.com/wp-json/wp/v2/posts?per_page=' + options.quantity + categories + tags;
+    var url = 'http://www.fortcarsonmountaineer.com/wp-json/wp/v2/posts?_embed&per_page=' + options.quantity + categories + tags;
     var output = [];
     var feedOutput = [];
 
@@ -69,32 +69,51 @@ import jQuery from 'jquery';
         });
       }
 
-      $.ajax(url, {
-        cache: true,
-        success: function (data, textStatus, jqXHR) {
-          if (feedOutput.length < 1) {
-            $.each(data, function(key, val) {
-              var feedItem = {
-                'title' : val.title.rendered,
-                'imgSrc' : $(val.content.rendered).find('img').eq(0).attr('src'),
-                'url' : val.link,
-                'excerpt' : val.excerpt.rendered,
-                'content' : val.content.rendered,
-                'tags' : val.tags,
-                'categories' : val.categories
+      function getFeed(userOptions) {
+        $.ajax(url, {
+          cache: true,
+          success: function (data, textStatus, jqXHR) {
+            if (feedOutput.length < 1) {
+              if (userOptions.imgSize !== 'none') {
+                $.each(data, function (key, val) {
+                  var feedItem = {
+                    'title': val.title.rendered,
+                    'imgSrc': val['_embedded']['wp:featuredmedia'][0]['media_details']['sizes'][userOptions.imgSize]['source_url'],
+                    'url': val.link,
+                    'excerpt': val.excerpt.rendered,
+                    'content': val.content.rendered,
+                    'tags': val.tags,
+                    'categories': val.categories
+                  };
+                  feedOutput.push(feedItem);
+                });
               }
-              feedOutput.push(feedItem);
-            });
-            bindTemplate($newTemplate, feedOutput);
-          }             
-        },
-        error: function (jqXHR, textStatus, errorThrown) {
-          $this.html('<p>Uh oh, there is an issue getting the information right now.</p>');
-        },
-        complete: function (jqXHR, textStatus) {
-          outputHtml();
-        }
-      });
+              else {
+                $.each(data, function (key, val) {
+                  var feedItem = {
+                    'title': val.title.rendered,
+                    'url': val.link,
+                    'excerpt': val.excerpt.rendered,
+                    'content': val.content.rendered,
+                    'tags': val.tags,
+                    'categories': val.categories
+                  };
+                  feedOutput.push(feedItem);
+                });
+              }
+              bindTemplate($newTemplate, feedOutput);
+            }
+          },
+          error: function (jqXHR, textStatus, errorThrown) {
+            $this.html('<p>Uh oh, there is an issue getting the information right now.</p>');
+          },
+          complete: function (jqXHR, textStatus) {
+            outputHtml();
+          }
+        });
+      }
+
+      getFeed(options);
 
     }); //end return
   }//end $.fn.feed
@@ -103,9 +122,9 @@ import jQuery from 'jquery';
     category : 'none',
     tags : 'none',
     quantity : 10,
-    hideClass : 'hide'
+    hideClass : 'hide',
+    imgSize : 'none'
   }
 
 })(jQuery);
-
 
