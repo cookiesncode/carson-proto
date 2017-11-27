@@ -18,4 +18,8 @@ $('.comm').feedMe({
 
 $('.reporting-status').feedMe({
   category: 7923
-})
+});
+
+$('.recent-news').feedMe({
+  category : 7924
+});
