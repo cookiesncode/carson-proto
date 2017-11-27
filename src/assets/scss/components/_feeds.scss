@@ -9,14 +9,19 @@
         color: $white;
       }
     }
-    img {
-    }
+    
   }
  
   .community-center {
     .fa-spinner {
       font-size: 50px;
     }
+  }
+}
+
+.recent-news {
+  .news-item {
+    margin: 0 0 3rem 0;
   }
 }
 

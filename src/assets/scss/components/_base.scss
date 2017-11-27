@@ -1,0 +1,32 @@
+body {
+  border-top: 4px solid #FFD530
+}
+
+section, footer {
+  margin: 2em 0;
+}
+
+.main-content {
+  background-color:$white; 
+  padding-top: 10px;
+
+  h2 {
+      &:after {
+        background: #fec325;
+        content: '';
+        display: block;
+        height: 5px;
+        margin: 10px 0 0 0;
+        width: 60px;
+      }
+    }
+
+    h3 {
+      letter-spacing: 3px;
+    }
+  
+}
+
+.fa {
+  color: rgb(26, 78, 59);
+}

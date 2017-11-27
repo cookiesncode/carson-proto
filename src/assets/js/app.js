@@ -24,5 +24,6 @@ $('.reporting-status').feedMe({
 
 $('.recent-news').feedMe({
   category : 7924,
-  imgSize : 'none'
+  imgSize : 'none',
+  quantity : 2
 });
