@@ -8,7 +8,8 @@
             category : 5,
             tags : 1110,
             quantity : 10,
-            hideClass: 'hide'
+            hideClass: 'hide',
+            imgSize : 'medium'
           });
 
       -List of options:
@@ -16,6 +17,7 @@
         2. tags = The tag ID you wish to filter by. The plugin only accepts a single tag. The default is 'none' 
         3. quantity = The number of posts you wish to receive. The default is 10 and the max is 100.
         4. hideClass = The class used to hide the template element. Default is 'hide'
+        5. imgSize : The size of the image you want to retrieve. Look in the feed request to see what sizes are availabe. The most common are 'thumbnail', 'medium', 'full'. The default is 'none'
 
       - HTML details:
         - The HTML selection you pass to jQuery/$ must have a child element that will be used as your template. This element, usually a "div"  must have a data attribute called "data-feed-template". This element must also must have a class that sets it to display none. You can use the foundation 'hide' class to do this or you can use your own custom class to hide it.
@@ -31,7 +33,7 @@
           2. data-feed-title = Post title
           3. data-feed-content = Post content body
           4. data-feed-excerpt = Post excerpt
-          5. data-feed-img = The first available image inside the content body
+          5. data-feed-img = The image source url.
 */
 import $ from 'jquery';
 import jQuery from 'jquery';
@@ -43,14 +45,23 @@ import jQuery from 'jquery';
   $.fn.feedMe = function(options) {
     
     options = $.extend($.fn.feedMe.defaults, options);
-    var domSelection
     var categories = options.category !== 'none' ? '&categories=' + options.category : '';
     var tags = options.tags !== 'none' ? '&tags=' + options.tags : '';
-    var url = 'http://www.fortcarsonmountaineer.com/wp-json/wp/v2/posts?_embed&per_page=' + options.quantity + categories + tags;
+    var url = 'http://www.fortcarsonmountaineer.com/wp-json/wp/v2/posts?_embed&per_page=' + options.quantity + categories + tags + '&imgSize=' + options.imgSize;
     var output = [];
     var feedOutput = [];
 
-    return this.each(function() {
+    $.urlParam = function(url, name){
+      var results = new RegExp('[\?&]' + name + '=([^]*)').exec(url);
+      if (results==null){
+         return null;
+      }
+      else{
+         return results[1] || 0;
+      }
+    }
+
+    return this.each(function(index, element) {
       var $this = $(this);
       var $template = $this.find('[data-feed-template]');
       var $newTemplate = $template.clone().removeClass(options.hideClass).removeAttr('data-feed-template');
@@ -69,52 +80,48 @@ import jQuery from 'jquery';
         });
       }
 
-      function getFeed(userOptions) {
-        $.ajax(url, {
-          cache: true,
-          success: function (data, textStatus, jqXHR) {
-            if (feedOutput.length < 1) {
-              if (userOptions.imgSize !== 'none') {
-                $.each(data, function (key, val) {
-                  var feedItem = {
-                    'title': val.title.rendered,
-                    'imgSrc': val['_embedded']['wp:featuredmedia'][0]['media_details']['sizes'][userOptions.imgSize]['source_url'],
-                    'url': val.link,
-                    'excerpt': val.excerpt.rendered,
-                    'content': val.content.rendered,
-                    'tags': val.tags,
-                    'categories': val.categories
-                  };
-                  feedOutput.push(feedItem);
-                });
-              }
-              else {
-                $.each(data, function (key, val) {
-                  var feedItem = {
-                    'title': val.title.rendered,
-                    'url': val.link,
-                    'excerpt': val.excerpt.rendered,
-                    'content': val.content.rendered,
-                    'tags': val.tags,
-                    'categories': val.categories
-                  };
-                  feedOutput.push(feedItem);
-                });
-              }
-              bindTemplate($newTemplate, feedOutput);
+      $.ajax(url, {
+        cache: true,
+        success: function (data, textStatus, jqXHR) {
+          var imgSize = $.urlParam(this.url, 'imgSize');
+          if (feedOutput.length < 1) {
+            if (imgSize !== 'none') {
+              $.each(data, function (key, val) {
+                var feedItem = {
+                  'title': val.title.rendered,
+                  'imgSrc': val['_embedded']['wp:featuredmedia'][0]['media_details']['sizes'][imgSize]['source_url'],
+                  'url': val.link,
+                  'excerpt': val.excerpt.rendered,
+                  'content': val.content.rendered,
+                  'tags': val.tags,
+                  'categories': val.categories
+                };
+                feedOutput.push(feedItem);
+              });
             }
-          },
-          error: function (jqXHR, textStatus, errorThrown) {
-            $this.html('<p>Uh oh, there is an issue getting the information right now.</p>');
-          },
-          complete: function (jqXHR, textStatus) {
-            outputHtml();
+            else {
+              $.each(data, function (key, val) {
+                var feedItem = {
+                  'title': val.title.rendered,
+                  'url': val.link,
+                  'excerpt': val.excerpt.rendered,
+                  'content': val.content.rendered,
+                  'tags': val.tags,
+                  'categories': val.categories
+                };
+                feedOutput.push(feedItem);
+              });
+            }
+            bindTemplate($newTemplate, feedOutput);
           }
-        });
-      }
-
-      getFeed(options);
-
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+          $this.html('<p>Uh oh, there is an issue getting the information right now.</p>');
+        },
+        complete: function (jqXHR, textStatus) {
+          outputHtml();
+        }
+      });
     }); //end return
   }//end $.fn.feed
 
