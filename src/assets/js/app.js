@@ -11,7 +11,7 @@ import './lib/jquery.feedme';
 
 $(document).foundation();
 
-$('.comm').feedMe({
+$('.comm-events').feedMe({
   category : 5,
   quantity : 10
 });
