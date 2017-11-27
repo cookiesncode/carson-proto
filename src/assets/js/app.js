@@ -11,11 +11,15 @@ import './lib/jquery.feedme';
 
 $(document).foundation();
 
-$('.comm').feedMe({
+$('.comm-events').feedMe({
   category : 5,
   quantity : 10
 });
 
 $('.reporting-status').feedMe({
   category: 7923
-})
+});
+
+$('.recent-news').feedMe({
+  category : 7924
+});
