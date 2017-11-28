@@ -1,6 +1,15 @@
 .top-bar {
   color: $white;
 
+  .army-icon {
+    position: absolute;
+    left: 50%;
+    top: 10px;
+    background: url(../img/sprite-icons.svg) no-repeat left -101px;
+    width: 52px;
+    height: 64px;
+  }
+
   .social {
     margin: 0;
     padding: 0;
