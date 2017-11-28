@@ -1,5 +1,35 @@
 .top-bar {
   color: $white;
+
+  .social {
+    margin: 0;
+    padding: 0;
+
+    li {
+      display: inline-block;
+      background: url(../img/sprite-icons.svg) no-repeat left top;
+      width: 30px;
+      height: 25px;
+    }
+    .facebook {
+      background-position: -54px 0px;
+      width: 15px;
+    }
+    .twitter {
+      background-position: 0 0;
+      width: 30px;
+    }
+    .instagram {
+      background-position: -68px 0px;
+      width: 26px;
+    }
+    .flickr {
+      background-position: -93px 0;
+      width: 26px;
+    }
+  }
 }
+
+
 
 
