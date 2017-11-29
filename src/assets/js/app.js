@@ -11,13 +11,14 @@ import './lib/jquery.feedme';
 
 $(document).foundation();
 
-$('.comm-events').feedMe({
-  category : 5,
-  quantity : 10,
+$('.news-events').feedMe({
+  category : 3,
+  quantity : 6,
   imgSize : 'medium'
 });
 
 $('.reporting-status').feedMe({
+  quantity : 1,
   category: 7923,
   imgSize : 'none'
 });
@@ -25,5 +26,5 @@ $('.reporting-status').feedMe({
 $('.recent-news').feedMe({
   category : 7924,
   imgSize : 'none',
-  quantity : 2
+  quantity : 1
 });
