@@ -26,5 +26,5 @@ $('.reporting-status').feedMe({
 $('.recent-news').feedMe({
   category : 7924,
   imgSize : 'none',
-  quantity : 1
+  quantity : 3
 });
