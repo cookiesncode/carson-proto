@@ -5,6 +5,10 @@
   color: $white;
   padding: 4rem 0 1rem 0;
   border-bottom: 2px solid $primary-color;
+  @include breakpoint(small only) {
+    padding: 1rem 0;
+  }
+
   h1 {
     font-weight: $global-weight-normal;
     color: $white;
