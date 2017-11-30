@@ -14,7 +14,7 @@ $(document).foundation();
 $('.news-events').feedMe({
   category : 3,
   quantity : 12,
-  imgSize : 'medium'
+  imgSize : 'medium_large'
 });
 
 $('.reporting-status').feedMe({
