@@ -13,7 +13,7 @@ $(document).foundation();
 
 $('.news-events').feedMe({
   category : 3,
-  quantity : 6,
+  quantity : 12,
   imgSize : 'medium'
 });
 

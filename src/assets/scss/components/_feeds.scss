@@ -1,29 +1,29 @@
-.comm-events {
-  min-height: 15rem;
-  .card {
-    .card-section {
-      min-height: 1px
-    }
-    a {
-      &:link, &:visited {
-        color: $white;
-      }
-    }
-    
+
+.card {
+  .card-section {
+    min-height: 1px
   }
- 
-  .community-center {
-    .fa-spinner {
-      font-size: 50px;
+  a {
+    &:link, &:visited {
+      color: $black;
     }
+  }
+  
+}
+
+.loading-elem {
+  .fa-spinner {
+    font-size: 50px;
   }
 }
+
 
 .recent-news {
   .news-item {
     margin: 0 0 3rem 0;
   }
 }
+
 
 
 
