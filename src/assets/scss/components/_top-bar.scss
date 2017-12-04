@@ -1,6 +1,14 @@
+.sticky-container {
+  z-index: 15;
+}
+
 .top-bar {
   color: $white;
-  border-top: 4px solid #FFD530;
+  border-bottom: 4px solid #FFD530;
+
+  .top-bar-left {
+    height: 31.5px;
+  }
 
   .army-icon {
     position: absolute;
@@ -19,7 +27,7 @@
       display: inline-block;
       background: url(../img/sprite-icons.svg) no-repeat left top;
       width: 30px;
-      height: 25px;
+      height: 24px;
       margin: 0 0.5rem;
     }
     .facebook {

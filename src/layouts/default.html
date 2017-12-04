@@ -13,15 +13,20 @@
 
 <body>
   <div class="off-canvas-wrapper">
-    <div class="off-canvas position-left" id="offCanvas" data-off-canvas>
+
+    {{> top-bar}}
+
+    <div class="off-canvas position-top" id="offCanvas" data-off-canvas data-transition="overlap">
       {{> offcanvas-menu}}
     </div>
+
     <div class="off-canvas-content" data-off-canvas-content>
-      {{> top-bar}} 
       {{> body}} 
       {{> footer}}
     </div>
+    
   </div>
+
   <script src="{{root}}assets/js/app.js"></script>
 </body>
 
